@@ -1,6 +1,10 @@
 {
   "folders": [
     {
+      "root": "ReactJS KeyCloak App PoC",
+      "path": "./frontend-keycloak-poc"
+    },
+    {
       "root": "Keycloak KrakenD PoC",
       "path": "./"
     }

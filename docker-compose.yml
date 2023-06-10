@@ -1,6 +1,8 @@
 version: "3.8"
 
 services:
+  api-gateway:
+    image: devopsfaith/krakend
   keycloak-postgres:
     image: postgres
     volumes:
