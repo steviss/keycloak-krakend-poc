@@ -5,9 +5,9 @@ import { RolesEnum } from 'src/types'
 
 import { useHasPermission } from 'src/store'
 
-import { ProtectedRoutePropsI } from './ProtectedRoute.interface'
+import { ProtectedRouteProps } from './ProtectedRoute.interface'
 
-const ProtectedRoute: React.FC<ProtectedRoutePropsI> = ({ requiredRole = RolesEnum.Guest }) => {
+const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ requiredRole = RolesEnum.Guest }) => {
   const location = useLocation()
   const hasRequiredRole = useHasPermission(requiredRole)
   return hasRequiredRole ? <Outlet /> : <Navigate to="/login" state={{ from: location }} />

@@ -1,21 +1,24 @@
 import React from 'react'
+import { Route, Routes } from 'react-router-dom'
 
-import './App.css'
-import logo from './logo.svg'
+import { RolesEnum } from 'src/types'
 
-function App() {
+import { AdminPage, DashboardPage, HomePage, NoMatchPage } from 'src/pages'
+
+import { ProtectedRoute } from 'src/components/atoms'
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="user" element={<ProtectedRoute requiredRole={RolesEnum.User} />}>
+        <Route index element={<DashboardPage />} />
+      </Route>
+      <Route path="admin" element={<ProtectedRoute requiredRole={RolesEnum.Admin} />}>
+        <Route index element={<AdminPage />} />
+      </Route>
+      <Route path="*" element={<NoMatchPage />} />
+    </Routes>
   )
 }
 

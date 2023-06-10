@@ -1,9 +1,9 @@
-import React, { useMemo } from 'react'
+import React, { FC, useMemo } from 'react'
 import { Navigate, Outlet, useLocation } from 'react-router-dom'
 
 import { useAuth } from 'src/store'
 
-const GuestOnlyRoute: React.FC = () => {
+const GuestOnlyRoute: FC = () => {
   const { user } = useAuth()
   const location = useLocation()
   const isGuest = useMemo(() => !user, [user])

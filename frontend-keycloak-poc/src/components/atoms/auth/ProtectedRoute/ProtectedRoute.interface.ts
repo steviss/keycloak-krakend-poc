@@ -1,5 +1,5 @@
 import { RolesEnum } from 'src/types'
 
-export interface ProtectedRoutePropsI {
+export interface ProtectedRouteProps {
   requiredRole?: RolesEnum
 }
