@@ -1,5 +1,4 @@
 import { cleanup, screen } from '@testing-library/react'
-import React from 'react'
 import { MemoryRouter } from 'react-router-dom'
 import { renderWithProviders } from 'src/tests'
 
@@ -16,7 +15,7 @@ describe('Layout Test Suite', () => {
         <Layout>
           <span>{MOCK_LAYOUT_TEXT}</span>
         </Layout>
-      </MemoryRouter>,
+      </MemoryRouter>
     )
     expect(screen.getByText(/Lorem Ipsum/i)).toBeInTheDocument()
     const layoutContainer = screen.getByTestId(TEST_LAYOUT_BOX_ID)
@@ -31,7 +30,7 @@ describe('Layout Test Suite', () => {
         <Layout type="centered">
           <span>{MOCK_LAYOUT_TEXT}</span>
         </Layout>
-      </MemoryRouter>,
+      </MemoryRouter>
     )
     const layoutContainer = screen.getByTestId(TEST_LAYOUT_BOX_ID)
     const styles = window.getComputedStyle(layoutContainer)

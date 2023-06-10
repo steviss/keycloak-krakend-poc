@@ -1,5 +1,5 @@
 import { AppBar, Toolbar, useTheme } from '@mui/material'
-import React, { useState } from 'react'
+import { FC, useState } from 'react'
 
 import { MenuDrawer, UserMenu } from 'src/components/organisms'
 
@@ -7,7 +7,7 @@ import { Link } from 'src/components/atoms'
 
 import { useAuth } from 'src/store'
 
-const Navigation: React.FC = () => {
+const Navigation: FC = () => {
   const theme = useTheme()
   const { user } = useAuth()
   const [drawerStatus, toggleDrawerStatus] = useState<boolean>(false)

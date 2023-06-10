@@ -13,7 +13,7 @@ export const setupStore = (preloadedState?: PreloadedState<RootState>) =>
   configureStore({
     reducer: rootReducer,
     preloadedState: preloadedState,
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(api.middleware, localStorageMiddleware.middleware),
+    middleware: getDefaultMiddleware => getDefaultMiddleware().concat(api.middleware, localStorageMiddleware.middleware),
   })
 
 export const preloadedState = reHydrateStore()

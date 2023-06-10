@@ -21,7 +21,7 @@ const MenuDrawer: React.FC<MenuDrawerProps> = ({ handleClose, ...props }) => {
   const handleToggleDashboard = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation()
     e.preventDefault()
-    toggleDashboardMenu((prevState) => !prevState)
+    toggleDashboardMenu(prevState => !prevState)
   }
   return (
     <Drawer

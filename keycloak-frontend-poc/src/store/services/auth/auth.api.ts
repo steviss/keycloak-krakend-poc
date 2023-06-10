@@ -15,37 +15,37 @@ import {
 } from './auth.interface'
 
 export const authApi = api.injectEndpoints({
-  endpoints: (build) => ({
+  endpoints: build => ({
     login: build.mutation<UserResponse, LoginRequest>({
-      query: (credentials) => ({
+      query: credentials => ({
         url: 'auth/login',
         method: RequestMethodEnum.Post,
         body: credentials,
       }),
     }),
     register: build.mutation<UserResponse, RegisterRequest>({
-      query: (credentials) => ({
+      query: credentials => ({
         url: 'auth/login',
         method: RequestMethodEnum.Post,
         body: credentials,
       }),
     }),
     forgotPassword: build.mutation<ForgotPasswordResponse, ForgotPasswordRequest>({
-      query: (credentials) => ({
+      query: credentials => ({
         url: 'auth/forgot-password',
         method: RequestMethodEnum.Post,
         body: credentials,
       }),
     }),
     changePassword: build.mutation<ChangePasswordResponse, ChangePasswordRequest>({
-      query: (credentials) => ({
+      query: credentials => ({
         url: 'auth/change-password',
         method: RequestMethodEnum.Patch,
         body: credentials,
       }),
     }),
     changePasswordPublic: build.mutation<ChangePasswordPublicResponse, ChangePasswordPublicRequest>({
-      query: (credentials) => ({
+      query: credentials => ({
         url: 'auth/change-password',
         method: RequestMethodEnum.Post,
         body: credentials,

@@ -1,5 +1,4 @@
 import { cleanup, screen } from '@testing-library/react'
-import React from 'react'
 import { MemoryRouter } from 'react-router-dom'
 import { MOCK_GUEST_PRELOADED_STATE, MOCK_USER_PRELOADED_STATE, renderWithProviders } from 'src/tests'
 
@@ -14,7 +13,7 @@ describe('Navigation Test Suite', () => {
       <MemoryRouter>
         <Navigation />
       </MemoryRouter>,
-      { preloadedState: MOCK_GUEST_PRELOADED_STATE },
+      { preloadedState: MOCK_GUEST_PRELOADED_STATE }
     )
     test('Render test', () => {
       expect(screen.getByText(/Login/i)).toBeInTheDocument()
@@ -25,7 +24,7 @@ describe('Navigation Test Suite', () => {
       <MemoryRouter>
         <Navigation />
       </MemoryRouter>,
-      { preloadedState: MOCK_USER_PRELOADED_STATE },
+      { preloadedState: MOCK_USER_PRELOADED_STATE }
     )
     test('Render test', () => {
       expect(screen.queryByText(/Login/i)).not.toBeInTheDocument()

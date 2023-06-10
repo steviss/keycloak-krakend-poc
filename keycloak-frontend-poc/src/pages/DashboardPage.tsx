@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { Layout } from 'src/templates'
 
 const DashboardPage: FC = () => {

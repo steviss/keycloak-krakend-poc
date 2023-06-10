@@ -1,6 +1,6 @@
 import { AccountCircle } from '@mui/icons-material'
 import { Box, IconButton, Menu, MenuItem } from '@mui/material'
-import React, { FC, MouseEvent, useState } from 'react'
+import { FC, MouseEvent, useState } from 'react'
 
 import { MenuItemLink } from 'src/components/atoms'
 

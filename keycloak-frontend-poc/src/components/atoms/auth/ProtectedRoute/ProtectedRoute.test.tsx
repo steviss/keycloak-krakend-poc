@@ -1,5 +1,5 @@
 import { cleanup, screen } from '@testing-library/react'
-import React from 'react'
+import { FC } from 'react'
 import { MemoryRouter, Route, Routes } from 'react-router-dom'
 import { MOCK_ADMIN_PRELOADED_STATE, MOCK_GUEST_PRELOADED_STATE, MOCK_USER_PRELOADED_STATE, renderWithProviders } from 'src/tests'
 
@@ -8,7 +8,7 @@ import { RolesEnum } from 'src/types'
 import ProtectedRoute from './ProtectedRoute'
 import { TEST_ADMIN_MINIMAL_REQUIREMENT, TEST_GUEST_MINIMAL_REQUIREMENT, TEST_USER_MINIMAL_REQUIREMENT } from './ProtectedRoute.consts'
 
-const ProtectedRoutesTestComponent: React.FC<{
+const ProtectedRoutesTestComponent: FC<{
   minimalRequirement: RolesEnum
 }> = ({ minimalRequirement }) => {
   return (

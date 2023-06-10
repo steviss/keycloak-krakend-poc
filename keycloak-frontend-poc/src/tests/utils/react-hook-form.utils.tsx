@@ -12,10 +12,10 @@ function renderWithReactHookForm(ui: React.ReactElement, { defaultValues, mockSu
     const methods = useForm({ defaultValues })
     const { handleSubmit } = methods
     const onSubmit = mockSubmitFunction
-      ? handleSubmit(async (data) => mockSubmitFunction(data))
+      ? handleSubmit(async data => mockSubmitFunction(data))
       : handleSubmit(async () =>
           // eslint-disable-next-line no-console
-          console.warn('No mock submit function'),
+          console.warn('No mock submit function')
         )
     return (
       <FormProvider {...methods}>
