@@ -1,14 +1,14 @@
 {
   "name": "keycloak-frontend-poc",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.3",
   "type": "module",
   "scripts": {
-    "dev": "cross-env vite",
-    "build": "cross-env tsc && vite build",
-    "lint": "cross-env eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "format": "cross-env prettier --write **/*.{ts,tsx,json,js}",
-    "preview": "cross-env vite preview"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "format": "prettier --write **/*.{ts,tsx,json,js}",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -46,6 +46,7 @@
     "@typescript-eslint/parser": "^5.59.9",
     "@vitejs/plugin-react": "^4.0.0",
     "@vitejs/plugin-react-swc": "^3.3.2",
+    "cross-env": "^7.0.3",
     "eslint": "^8.42.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-no-relative-import-paths": "^1.5.2",

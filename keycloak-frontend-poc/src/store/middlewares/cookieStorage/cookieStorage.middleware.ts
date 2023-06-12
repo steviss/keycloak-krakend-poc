@@ -8,7 +8,7 @@ export const localStorageMiddleware = createListenerMiddleware()
 
 localStorageMiddleware.startListening({
   actionCreator: setCredentials,
-  effect: async (action, cookieStorageApi) => {
+  effect: async (_action, cookieStorageApi) => {
     localStorage.setItem(appConfig.COOKIE_NAME, JSON.stringify(cookieStorageApi.getState()))
   },
 })

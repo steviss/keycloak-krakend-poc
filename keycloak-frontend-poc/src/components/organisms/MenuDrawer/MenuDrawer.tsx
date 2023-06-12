@@ -11,12 +11,12 @@ import { ListLinkButton } from 'src/components/atoms'
 
 import { useHasPermission } from 'src/store'
 
-import { DASHBOARD_LINK, MENU_GUEST_LINKS, MENU_PROTECTED_LINKS } from './MenuDrawer.consts'
+import { MENU_ADMIN_LINKS, MENU_GUEST_LINKS, MENU_USER_LINKS } from './MenuDrawer.consts'
 import { MenuDrawerProps } from './MenuDrawer.interface'
 
 const MenuDrawer: React.FC<MenuDrawerProps> = ({ handleClose, ...props }) => {
   const theme = useTheme()
-  const isManager = useHasPermission(RolesEnum.Manager)
+  const isAdmin = useHasPermission(RolesEnum.Admin)
   const [dashboardMenuOpen, toggleDashboardMenu] = useState<boolean>(false)
   const handleToggleDashboard = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation()
@@ -69,17 +69,17 @@ const MenuDrawer: React.FC<MenuDrawerProps> = ({ handleClose, ...props }) => {
             </ListLinkButton>
           ))}
         </List>
-        {isManager && (
+        {isAdmin && (
           <List component="nav" aria-label="admin menu" sx={{ backgroundColor: darken(theme.palette.primary.main, 0.25) }}>
-            <ListLinkButton to={DASHBOARD_LINK.url}>
-              <ListItemText primary={DASHBOARD_LINK.label} />
+            <ListLinkButton to={MENU_USER_LINKS[0].url}>
+              <ListItemText primary={MENU_USER_LINKS[0].label} />
               <IconButton size="large" color="inherit" aria-label="toggle dashboard menu" onClick={handleToggleDashboard}>
                 {dashboardMenuOpen ? <ExpandMore /> : <ExpandLess />}
               </IconButton>
             </ListLinkButton>
             <Collapse in={dashboardMenuOpen} timeout="auto" unmountOnExit>
               <List component="nav" aria-label="dashboard menu" sx={{ backgroundColor: darken(theme.palette.primary.main, 0.25) }}>
-                {MENU_PROTECTED_LINKS.map(({ label, url, id }) => (
+                {MENU_ADMIN_LINKS.map(({ label, url, id }) => (
                   <ListLinkButton key={id} to={url}>
                     <ListItemText primary={label} />
                   </ListLinkButton>

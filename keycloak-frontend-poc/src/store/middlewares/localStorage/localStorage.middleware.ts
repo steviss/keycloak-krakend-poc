@@ -8,7 +8,7 @@ export const localStorageMiddleware = createListenerMiddleware()
 
 localStorageMiddleware.startListening({
   actionCreator: setCredentials,
-  effect: async (action, localStorageApi) => {
+  effect: async (_action, localStorageApi) => {
     localStorage.setItem(appConfig.LOCAL_STORAGE_STORE_NAME, JSON.stringify(localStorageApi.getState()))
   },
 })
