@@ -11,6 +11,16 @@ services:
       POSTGRES_DB: ${KEYCLOAK_PG_DATABASE}
       POSTGRES_USER: ${KEYCLOAK_PG_USERNAME}
       POSTGRES_PASSWORD: ${KEYCLOAK_PG_PASSWORD}
+  keycloak-postgres-dbeaver:
+    image: dbeaver/cloudbeaver:latest
+    volumes:
+      - dbeaver_data:/opt/cloudbeaver/workspace
+    ports:
+      - ${DBEAVER_PORT}:8978
+    depends_on:
+      - keycloak-postgres
+    restart: unless-stopped
+
   keycloak:
     image: quay.io/keycloak/keycloak:latest
     environment:
@@ -24,11 +34,11 @@ services:
       KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
       # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
       #JDBC_PARAMS: "ssl=true"
-    command: "start-dev"
     ports:
       - ${KEYCLOAK_PORT}:8080
     depends_on:
       - keycloak-postgres
+    command: "start-dev"
   #keycloak-frontend-app:
   #  build:
   #    context: "./keycloak-frontend-poc"
@@ -44,4 +54,6 @@ services:
 
 volumes:
   postgres_data:
+    driver: local
+  dbeaver_data:
     driver: local
