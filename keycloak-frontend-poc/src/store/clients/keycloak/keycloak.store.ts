@@ -12,7 +12,7 @@ function createKeycloakStore<T = KecloakStore>() {
   function useStoreContext() {
     const context = useContext(Context)
     if (context === undefined) {
-      throw new Error(`Context Provider for Geoman Store is missing`)
+      throw new Error(`Context Provider for Keycloak Store is missing`)
     }
     return context
   }

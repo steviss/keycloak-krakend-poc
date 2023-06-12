@@ -10,3 +10,6 @@ export const reHydrateStore = (): PreloadedState<RootState> | undefined => {
   if (fromCookie) return JSON.parse(fromCookie) as unknown as PreloadedState<RootState>
   return undefined
 }
+
+// Keycloak stavljamo u state preko ovoga
+// Keycloak se moze pristupiti preko hook-a

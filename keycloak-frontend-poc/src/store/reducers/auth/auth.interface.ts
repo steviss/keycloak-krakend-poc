@@ -1,6 +1,8 @@
+import Keycloak from 'keycloak-js'
+
 import { UserType } from 'src/types'
 
 export interface AuthReducerState {
-  token: string | null
   user: UserType | null
+  keycloak: Keycloak | null
 }

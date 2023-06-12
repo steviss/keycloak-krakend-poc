@@ -4,11 +4,15 @@ import { FC, MouseEvent, useState } from 'react'
 
 import { MenuItemLink } from 'src/components/atoms'
 
-import { removeCredentials, useAppDispatch } from 'src/store'
+import { removeCredentials, useAppDispatch, useKeycloakStore } from 'src/store'
 
 const UserMenu: FC = () => {
   const dispatch = useAppDispatch()
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+
+  const {
+    keycloak: { logout },
+  } = useKeycloakStore()
 
   const handleMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
@@ -21,6 +25,7 @@ const UserMenu: FC = () => {
   const userLogout = () => {
     localStorage.clear()
     dispatch(removeCredentials())
+    logout()
     handleClose()
   }
   return (

@@ -1,6 +1,8 @@
 import Keycloak, { KeycloakAdapter, KeycloakConfig } from 'keycloak-js'
 import { FC, PropsWithChildren, useEffect, useRef, useState } from 'react'
 
+import { keycloakInitOptions } from 'src/store'
+
 import { KeycloakStoreProvider } from './keycloak.store'
 
 export type KeycloakStoreReactAdapter = KeycloakAdapter
@@ -12,7 +14,7 @@ const KeycloakProvider: FC<KeycloakProviderProps> = ({ config, children }) => {
   const [loading, setLoading] = useState<boolean>(true)
   useEffect(() => {
     keycloak.current
-      .init({ adapter: 'default', onLoad: 'check-sso', silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html' })
+      .init(keycloakInitOptions)
       .then(value => {
         if (value) {
           console.log('keycloak token', keycloak.current.token)
