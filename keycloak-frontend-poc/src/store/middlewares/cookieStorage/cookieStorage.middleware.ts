@@ -1,4 +1,5 @@
 import { createListenerMiddleware } from '@reduxjs/toolkit'
+import Cookies from 'js-cookie'
 
 import { appConfig } from 'src/utilities'
 
@@ -9,6 +10,6 @@ export const localStorageMiddleware = createListenerMiddleware()
 localStorageMiddleware.startListening({
   actionCreator: setCredentials,
   effect: async (_action, cookieStorageApi) => {
-    localStorage.setItem(appConfig.COOKIE_NAME, JSON.stringify(cookieStorageApi.getState()))
+    Cookies.set(appConfig.COOKIE_NAME, JSON.stringify(cookieStorageApi.getState()))
   },
 })

@@ -1,19 +1,19 @@
 import { PreloadedState, combineReducers, configureStore } from '@reduxjs/toolkit'
 
-import { localStorageMiddleware, reHydrateStore } from './middlewares'
-import { authReducer } from './reducers'
+import { reHydrateStore } from './middlewares'
+import { keycloakReducer } from './reducers'
 import { api } from './services'
 
 export const rootReducer = combineReducers({
   [api.reducerPath]: api.reducer,
-  auth: authReducer,
+  keycloak: keycloakReducer,
 })
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) =>
   configureStore({
     reducer: rootReducer,
     preloadedState: preloadedState,
-    middleware: getDefaultMiddleware => getDefaultMiddleware().concat(api.middleware, localStorageMiddleware.middleware),
+    middleware: getDefaultMiddleware => getDefaultMiddleware().concat(api.middleware),
   })
 
 export const preloadedState = reHydrateStore()
