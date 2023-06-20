@@ -1,6 +1,6 @@
 import { UserType } from 'src/types'
 
-export interface AuthReducerState {
-  token: string | null
+export interface KeycloakReducerState {
   user: UserType | null
+  token: string | null
 }

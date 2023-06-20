@@ -1,22 +1,22 @@
 import { AppBar, Button, Toolbar, Typography, useTheme } from '@mui/material'
 import { FC, useState } from 'react'
+import { useKeycloak } from 'src/hooks'
 
 import { MenuDrawer, UserMenu } from 'src/components/organisms'
 
-import { useKeycloakStore } from 'src/store'
+import { useAuth } from 'src/store'
 
 const Navigation: FC = () => {
   const theme = useTheme()
-  const {
-    keycloak: { login, authenticated },
-  } = useKeycloakStore()
+  const { login } = useKeycloak()
+  const { user } = useAuth()
   const [drawerStatus, toggleDrawerStatus] = useState<boolean>(false)
   return (
     <>
       <AppBar position="sticky" sx={{ backgroundColor: theme.palette.primary.main }}>
         <Toolbar>
           <Typography style={{ marginRight: 'auto' }}>Logo</Typography>
-          {authenticated ? (
+          {user ? (
             <UserMenu />
           ) : (
             <Button color="secondary" onClick={() => login({ redirectUri: window.location.origin })}>

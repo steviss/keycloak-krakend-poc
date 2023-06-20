@@ -1,14 +1,14 @@
 import { AccountCircle } from '@mui/icons-material'
 import { Box, IconButton, Menu, MenuItem } from '@mui/material'
 import { FC, MouseEvent, useState } from 'react'
+import { useKeycloak } from 'src/hooks'
 
 import { MenuItemLink } from 'src/components/atoms'
 
-import { removeCredentials, useAppDispatch } from 'src/store'
-
 const UserMenu: FC = () => {
-  const dispatch = useAppDispatch()
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+
+  const { logout, account } = useKeycloak()
 
   const handleMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
@@ -19,9 +19,7 @@ const UserMenu: FC = () => {
   }
 
   const userLogout = () => {
-    localStorage.clear()
-    dispatch(removeCredentials())
-    handleClose()
+    logout()
   }
   return (
     <Box>
@@ -53,6 +51,7 @@ const UserMenu: FC = () => {
         <MenuItemLink onClick={handleClose} href="/user">
           My account
         </MenuItemLink>
+        <MenuItem onClick={account}>Keycloak Account</MenuItem>
         <MenuItem onClick={userLogout}>Logout</MenuItem>
       </Menu>
     </Box>

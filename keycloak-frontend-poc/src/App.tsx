@@ -10,6 +10,8 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
+      <Route path="/login" element={<HomePage />} />
+      <Route path="/logout" element={<HomePage />} />
       <Route path="user" element={<ProtectedRoute requiredRole={RolesEnum.User} />}>
         <Route index element={<DashboardPage />} />
       </Route>

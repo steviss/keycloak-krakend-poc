@@ -5,7 +5,7 @@ function createStore<T>() {
   function useStoreContext() {
     const context = useContext(Context)
     if (context === undefined) {
-      throw new Error(`Context Provider for Geoman Store is missing`)
+      throw new Error(`Context Provider for Store is missing`)
     }
     return context
   }
