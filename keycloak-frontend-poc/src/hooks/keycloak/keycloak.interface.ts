@@ -1,7 +1,10 @@
-import Keycloak from 'keycloak-js'
+import Keycloak, { KeycloakConfig, KeycloakInitOptions } from 'keycloak-js'
 import { PropsWithChildren } from 'react'
 
-export type KeycloakProviderProps = PropsWithChildren
+export type KeycloakProviderProps = PropsWithChildren<{
+  keycloakConfig: KeycloakConfig
+  keycloakInitOptions: KeycloakInitOptions
+}>
 
 export type TrustMeBroType<T> = Exclude<T, null | undefined>
 

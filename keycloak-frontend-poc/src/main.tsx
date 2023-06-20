@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client'
 import { HelmetProvider } from 'react-helmet-async'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
-import { KeycloakProvider } from 'src/hooks'
+import { KeycloakProvider, keycloakConfig, keycloakInitOptions } from 'src/hooks'
 
 import App from './App.tsx'
 import './index.css'
@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <HelmetProvider>
       <Provider store={store}>
-        <KeycloakProvider>
+        <KeycloakProvider keycloakConfig={keycloakConfig} keycloakInitOptions={keycloakInitOptions}>
           <ThemeProvider theme={theme}>
             <BrowserRouter>
               <App />

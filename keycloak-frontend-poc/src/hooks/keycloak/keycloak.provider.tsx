@@ -20,13 +20,13 @@ import {
 } from './keycloak.interface'
 import { parseKeycloakTokenToUser } from './keycloak.utility'
 
-const KeycloakProvider: FC<KeycloakProviderProps> = ({ children }) => {
+const KeycloakProvider: FC<KeycloakProviderProps> = ({ keycloakConfig, keycloakInitOptions, children }) => {
   const [loading, setLoading] = useState<boolean>(true)
   const [keycloakUrls, setKeycloakUrls] = useState<KeycloakURLsType | undefined>(undefined)
 
   const dispatch = useDispatch()
 
-  const keycloak = useMemo(() => new Keycloak(keycloakConfig), [])
+  const keycloak = useMemo(() => new Keycloak(keycloakConfig), [keycloakConfig])
 
   const loginUser = useCallback(() => {
     if (keycloak.tokenParsed && keycloak.token) {
@@ -100,7 +100,7 @@ const KeycloakProvider: FC<KeycloakProviderProps> = ({ children }) => {
     keycloak.onAuthSuccess = handleOnAuthSuccess
     keycloak.onTokenExpired = handleOnTokenExpired
     keycloak.init(keycloakInitOptions)
-  }, [handleOnAuthLogout, handleOnAuthRefreshError, handleOnAuthSuccess, handleOnReady, keycloak])
+  }, [handleOnAuthLogout, handleOnAuthRefreshError, handleOnAuthSuccess, handleOnReady, keycloak, keycloakInitOptions])
 
   if (loading) return <div>Authenticating...</div>
 
