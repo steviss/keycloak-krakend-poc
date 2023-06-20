@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux'
 
 import { removeCredentials, setCredentials } from 'src/store'
 
-import keycloakConfig, { keycloakInitOptions } from './keycloak.config'
 import KeycloakContext from './keycloak.context'
 import {
   KeycloakOnActionUpdateFunction,
