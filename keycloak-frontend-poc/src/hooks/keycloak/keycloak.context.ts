@@ -1,6 +1,7 @@
-import { KeycloakContext } from './keycloak.interface'
 import { createContext } from 'react'
 
-const KeycloakContext = createContext<KeycloakContext | undefined>(undefined)
+import { KeycloakContextType } from './keycloak.interface'
+
+const KeycloakContext = createContext<KeycloakContextType | undefined>(undefined)
 
 export default KeycloakContext

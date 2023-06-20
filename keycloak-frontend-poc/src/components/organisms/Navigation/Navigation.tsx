@@ -11,7 +11,6 @@ const Navigation: FC = () => {
   const { login } = useKeycloak()
   const { user } = useAuth()
   const [drawerStatus, toggleDrawerStatus] = useState<boolean>(false)
-  console.log('user', user)
   return (
     <>
       <AppBar position="sticky" sx={{ backgroundColor: theme.palette.primary.main }}>

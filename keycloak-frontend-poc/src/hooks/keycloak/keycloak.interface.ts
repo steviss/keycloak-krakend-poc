@@ -21,7 +21,16 @@ export type KeycloakOnAuthSuccessFunction = Keycloak['onAuthSuccess']
 
 export type KeycloakOnTokenExpiredFunction = Keycloak['onTokenExpired']
 
-export type KeycloakContext = {
+export type KeycloakURLsType = {
+  register: string
+  account: string
+  login: string
+  logout: string
+}
+
+export type KeycloakContextType = {
   login: Keycloak['login']
   logout: () => void
+  account: Keycloak['accountManagement']
+  urls: KeycloakURLsType | undefined
 }

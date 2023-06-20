@@ -8,7 +8,7 @@ import { MenuItemLink } from 'src/components/atoms'
 const UserMenu: FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 
-  const { logout } = useKeycloak()
+  const { logout, account } = useKeycloak()
 
   const handleMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
@@ -51,6 +51,7 @@ const UserMenu: FC = () => {
         <MenuItemLink onClick={handleClose} href="/user">
           My account
         </MenuItemLink>
+        <MenuItem onClick={account}>Keycloak Account</MenuItem>
         <MenuItem onClick={userLogout}>Logout</MenuItem>
       </Menu>
     </Box>
