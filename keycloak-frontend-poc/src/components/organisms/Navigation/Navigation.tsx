@@ -8,7 +8,7 @@ import { useKeycloakStore } from 'src/store'
 const Navigation: FC = () => {
   const theme = useTheme()
   const {
-    keycloak: { login, authenticated },
+    keycloak: { login, register, authenticated },
   } = useKeycloakStore()
   const [drawerStatus, toggleDrawerStatus] = useState<boolean>(false)
   return (
@@ -19,9 +19,14 @@ const Navigation: FC = () => {
           {authenticated ? (
             <UserMenu />
           ) : (
-            <Button color="secondary" onClick={() => login({ redirectUri: window.location.origin })}>
-              Login
-            </Button>
+            <>
+              <Button color="secondary" onClick={() => login({ redirectUri: window.location.origin })}>
+                Login
+              </Button>
+              <Button color="secondary" onClick={() => register({ redirectUri: window.location.origin })}>
+                Register
+              </Button>
+            </>
           )}
         </Toolbar>
       </AppBar>

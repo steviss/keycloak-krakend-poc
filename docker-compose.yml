@@ -1,8 +1,6 @@
 version: "3.8"
 
 services:
-  api-gateway:
-    image: devopsfaith/krakend
   keycloak-postgres:
     image: postgres
     volumes:
@@ -20,7 +18,6 @@ services:
     depends_on:
       - keycloak-postgres
     restart: unless-stopped
-
   keycloak:
     image: quay.io/keycloak/keycloak:latest
     environment:
@@ -39,18 +36,34 @@ services:
     depends_on:
       - keycloak-postgres
     command: "start-dev"
-  #keycloak-frontend-app:
-  #  build:
-  #    context: "./keycloak-frontend-poc"
-  #    dockerfile: "./Dockerfile"
-  #  ports:
-  #    - ${FRONTEND_APP_PORT}:3000
-  #  volumes:
-  #    - ./keycloak-frontend-poc:/frontend-app
-  #    - /frontend-app/node_modules
-  #  restart: unless-stopped
-  #  depends_on:
-  #    - keycloak
+  keycloak-frontend-app-one:
+    build:
+      context: "./keycloak-frontend-poc"
+      dockerfile: "./Dockerfile"
+    ports:
+      - ${FRONTEND_APP_ONE_PORT}:3000
+    env_file:
+      - '.env.react.one'
+    volumes:
+      - ./keycloak-frontend-poc:/frontend-app
+      - /frontend-app/node_modules
+    restart: unless-stopped
+    depends_on:
+      - keycloak
+  keycloak-frontend-app-two:
+    build:
+      context: "./keycloak-frontend-poc"
+      dockerfile: "./Dockerfile"
+    ports:
+      - ${FRONTEND_APP_TWO_PORT}:3000
+    env_file:
+      - '.env.react.two'
+    volumes:
+      - ./keycloak-frontend-poc:/frontend-app
+      - /frontend-app/node_modules
+    restart: unless-stopped
+    depends_on:
+      - keycloak
 
 volumes:
   postgres_data:

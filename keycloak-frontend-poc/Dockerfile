@@ -1,5 +1,4 @@
 FROM node:18-alpine
-ENV NODE_ENV production
 
 RUN apk add --no-cache git
 RUN apk add --update --no-cache \
@@ -22,4 +21,4 @@ COPY . /frontend-app
 
 RUN yarn build
 EXPOSE 3000
-CMD yarn start
+CMD yarn dev
