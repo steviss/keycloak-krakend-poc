@@ -9,6 +9,7 @@ services:
       POSTGRES_DB: ${KEYCLOAK_PG_DATABASE}
       POSTGRES_USER: ${KEYCLOAK_PG_USERNAME}
       POSTGRES_PASSWORD: ${KEYCLOAK_PG_PASSWORD}
+
   keycloak-postgres-dbeaver:
     image: dbeaver/cloudbeaver:latest
     volumes:

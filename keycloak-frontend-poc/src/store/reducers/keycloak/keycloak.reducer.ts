@@ -3,15 +3,15 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 
 import { UserResponse } from 'src/store/services'
 
-import { AuthReducerState } from './auth.interface'
+import { KeycloakReducerState } from './keycloak.interface'
 
-const initialState: AuthReducerState = {
+const initialState: KeycloakReducerState = {
   token: null,
   user: null,
 }
 
-export const authSlice = createSlice({
-  name: 'auth',
+export const keycloakSlice = createSlice({
+  name: 'keycloak',
   initialState,
   reducers: {
     setCredentials: (state, { payload: { token, ...user } }: PayloadAction<UserResponse>) => {
@@ -24,4 +24,4 @@ export const authSlice = createSlice({
   },
 })
 
-export default authSlice.reducer
+export default keycloakSlice.reducer

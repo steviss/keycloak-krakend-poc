@@ -1,8 +1,8 @@
 export type UserType = {
-  firstName: string
-  lastName: string
   email: string
-  lastLoginAt: string
-  role: string
-  primaryAddress?: string | null
+  email_verified: boolean
+  name: string
+  preferred_username: string
+  family_name: string
+  given_name: string
 }
